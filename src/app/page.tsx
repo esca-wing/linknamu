@@ -1,16 +1,12 @@
+import LinkList from "@/components/LinkList";
 import MinionAvatar from "@/components/MinionAvatar";
+import { links } from "@/lib/links";
 
 // 더미 데이터 — 진짜 내용은 나중에 교체
 const profile = {
   name: "주윤석",
   bio: "설비구매팀, 요즘에는 AI개발, 투자에 관심이 많아요",
 };
-
-const links = [
-  { title: "깃허브", url: "https://github.com/esca-wing" },
-  { title: "블로그", url: "https://blog.naver.com/navy_esca" },
-  { title: "이메일", url: "mailto:esca.wing@gmail.com" },
-];
 
 export default function Home() {
   return (
@@ -25,21 +21,7 @@ export default function Home() {
           {profile.bio}
         </p>
 
-        <ul className="mt-12 flex w-full flex-col gap-4">
-          {links.map((link) => (
-            <li key={link.title}>
-              <a
-                href={link.url}
-                {...(link.url.startsWith("http")
-                  ? { target: "_blank", rel: "noopener noreferrer" }
-                  : {})}
-                className="block rounded-2xl border border-white/50 bg-white/40 px-5 py-4 text-center font-medium shadow-[0_8px_32px_rgba(120,70,40,0.08)] backdrop-blur-xl transition duration-200 hover:-translate-y-0.5 hover:bg-white/60 dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10"
-              >
-                {link.title}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <LinkList links={links} />
       </div>
     </main>
   );
